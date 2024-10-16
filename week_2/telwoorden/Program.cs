@@ -1,11 +1,10 @@
 ﻿class Program
 {
-    static void Main()
-    {
-        string filePath = @"./txt/input.txt";
-        List<string> text = new List<string>();
+    public static void VerwerkBestand(string filePath) {
+        Dictionary<string, int> wordCounts = new Dictionary<string, int>();
+        KeyValuePair<string, int>[] mostCommonWords;
 
-        try{
+        try {
             using (StreamReader reader = new StreamReader(filePath))
             {
                 string line = "";
@@ -13,7 +12,29 @@
 
                 while((line = reader.ReadLine()) != null)
                 {
-                    text.Add(line);
+                    string[] wordsInLine = line.Split(' ');
+
+                    foreach(string word in wordsInLine)
+                    {
+                        if (wordCounts.ContainsKey(word)) {
+                            wordCounts[word] += 1;
+                        } else {
+                            wordCounts[word] = 1;
+                        }
+                    }
+
+                    if (lineNumber % 100 == 0 && lineNumber != 0) {
+                        mostCommonWords = wordCounts.OrderByDescending(w => w.Value).Take(3).ToArray();
+                        Console.WriteLine("Most common word until line " + lineNumber + ": " + mostCommonWords[0].Key + " (" + mostCommonWords[0].Value + ")");
+                    }
+
+                    lineNumber++;
+                }
+
+                mostCommonWords = wordCounts.OrderByDescending(w => w.Value).ToArray();
+                Console.WriteLine("\nFinal leaderboard of the most common words within this file:");
+                for (int i = 0; i < mostCommonWords.Length; i++) {
+                    Console.WriteLine((i+1) + ". " + mostCommonWords[i].Key + " (" + mostCommonWords[i].Value + ")");
                 }
             }
         }
@@ -29,7 +50,10 @@
         {
             Console.WriteLine("An error occurred: " + ex.Message);
         }
-
-        Console.WriteLine(string.Join("\n", text));
     }
+
+    static void Main()
+    {
+        VerwerkBestand(@"./txt/input.txt");
+    }    
 }
