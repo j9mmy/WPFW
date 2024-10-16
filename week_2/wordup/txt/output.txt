@@ -1,0 +1,28 @@
+
+Aantal klinkers:
+Mijn: 1
+racecar: 3
+is: 1
+snel: 1
+Het: 1
+is: 1
+een: 2
+Honda: 2
+Civic: 2
+EK: 1
+lol: 1
+
+Aantal medeklinkers:
+Mijn: 3
+racecar: 4
+is: 1
+snel: 3
+Het: 2
+is: 1
+een: 1
+Honda: 3
+Civic: 3
+EK: 1
+lol: 2
+
+Palindromen: racecar, Civic, lol
