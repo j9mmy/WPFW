@@ -1,0 +1,6 @@
+# Ignore Visual Studio Code specific files
+.vscode/
+
+# Ignore build outputs
+bin/
+obj/
