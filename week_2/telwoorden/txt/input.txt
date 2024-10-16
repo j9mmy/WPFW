@@ -1,0 +1,2 @@
+To read a text file line by line and perform actions at certain intervals during the reading process, you can use the StreamReader class in C#. 
+This allows you to read the file line by line and insert your custom logic at specific points.
